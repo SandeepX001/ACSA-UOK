@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="assets/img/ACSAlogo.png" type="image/png">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+        
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <title>ACSA | UOK</title>
+        
+    </head>
+    <body>
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="index2.0.html">
+				<div class="logo-container">
+					<img src="assets/img/logo.png" alt="Logo" class="logo">
+				</div></a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link ">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">Events</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#discover" class="nav__link">About</a>
+                        </li>
+                         <li class="nav__item dropdown">
+                            <a href="#x" class="nav__link">Course <i class="ri-arrow-down-s-line dropdown__icon"></i></a>
+                <ul class="dropdown__menu">
+                    <li>
+                        <a href="#discover" class="dropdown__link">Syllabus</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="dropdown__link">Past Papers</a>
+                    </li>
+                </ul>
+            </li>
+                        <li class="nav__item">
+                            <a href="#place" class="nav__link">Achievements</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#place" class="nav__link">News</a>
+                        </li>
+                    </ul>
+
+                    <div class="nav__dark">
+                        <!-- Theme change button -->
+                        <span class="change-theme-name">Dark mode</span>
+                        <i class="ri-moon-line change-theme" id="theme-button"></i>
+                    </div>
+
+                    <i class="ri-close-line nav__close" id="nav-close"></i>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-function-line"></i>
+                </div>
+            </nav>
+        </header>
+
+
+  <style>
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: #0a1f3a;
+}
+
+
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .syllabus-title {
+  text-align: center;
+  color: #333;
+  font-size: 28px;
+    margin: 0 0 10px 0;
+  padding-top: 120px;
+  padding-bottom: 50px;
+}
+    
+    .stepper-container {
+  max-width: 800px;
+  margin: 10px auto; /* Add vertical margin and auto horizontal for centering */
+  
+  position: relative; /* Add this if not present */
+    }
+    .stepper-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .step-levels {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .level {
+      text-align: center;
+      flex: 1;
+      position: relative;
+      cursor: pointer;
+      padding: 10px;
+    }
+    
+    .level-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .level.active .level-number {
+      background-color: #102e55;
+      color: white;
+    }
+    
+    .level.completed .level-number {
+      background-color: #2362b3;
+      color: white;
+    }
+    
+    .level-title {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .level.active .level-title {
+      color: #333;
+      font-weight: bold;
+    }
+    
+    .progress-line {
+      position: absolute;
+      height: 4px;
+      background-color: #e0e0e0;
+      top: 30px;
+      left: 0;
+      right: 0;
+      z-index: -1;
+    }
+    
+    .progress {
+      height: 100%;
+      background-color: #102e55;
+      transition: width 0.3s ease-in;
+    }
+    
+    .step-content {
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      min-height: 200px;
+    }
+    
+    .content-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    
+    .content-table th, .content-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    
+    .content-table th {
+      background-color: #f2f2f2;
+    }
+    
+    .navigation-arrows {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    
+    .nav-button {
+      padding: 10px 20px;
+      background-color: #102e55;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .nav-button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    .nav-button.prev {
+      background-color: #f1f1f1;
+      color: #333;
+    }
+    
+    /* Hide all level panels by default */
+    .level-panel {
+      display: none;
+    }
+    
+    /* Show only active level panel */
+    .level-panel.active {
+      display: block;
+    }
+    
+    /* Hide next button on level 4 */
+    .hide-next .next {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <h1 class="syllabus-title">Bsc (Hons) Applied Chemistry Syllabus</h1>
+  <div class="stepper-container">
+    <div class="stepper-header">
+      <div class="step-levels">
+        <div class="level active" data-level="1">
+          <div class="level-number">1</div>
+          <div class="level-title">Level 1</div>
+        </div>
+        <div class="level" data-level="2">
+          <div class="level-number">2</div>
+          <div class="level-title">Level 2</div>
+        </div>
+        <div class="level" data-level="3">
+          <div class="level-number">3</div>
+          <div class="level-title">Level 3</div>
+        </div>
+        <div class="level" data-level="4">
+          <div class="level-number">4</div>
+          <div class="level-title">Level 4</div>
+        </div>
+        <div class="progress-line">
+          <div class="progress" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="step-content">
+      <!-- Level 1 Content -->
+      <div class="level-panel active" data-level="1">
+        <h2>Level 1 Information</h2>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Description</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Item 1</td>
+              <td>Description for level 1 item 1</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>Item 2</td>
+              <td>Description for level 1 item 2</td>
+              <td>200</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Level 2 Content -->
+      <div class="level-panel" data-level="2">
+        <h2>Level 2 Information</h2>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Details</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Component A</td>
+              <td>Level 2 details for component A</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Component B</td>
+              <td>Level 2 details for component B</td>
+              <td>Inactive</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Level 3 Content -->
+      <div class="level-panel" data-level="3">
+        <h2>Level 3 Information</h2>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Parameters</th>
+              <th>Results</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Section X</td>
+              <td>Level 3 parameters for X</td>
+              <td>85%</td>
+            </tr>
+            <tr>
+              <td>Section Y</td>
+              <td>Level 3 parameters for Y</td>
+              <td>92%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Level 4 Content -->
+      <div class="level-panel" data-level="4">
+        <h2>Level 4 Information</h2>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Final Item</th>
+              <th>Summary</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Final Report</td>
+              <td>Level 4 summary information</td>
+              <td>1,000</td>
+            </tr>
+            <tr>
+              <td>Conclusion</td>
+              <td>Final level conclusions</td>
+              <td>Completed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="navigation-arrows" id="nav-arrows">
+      <button class="nav-button prev" disabled>Previous</button>
+      <button class="nav-button next">Next Level</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const levels = document.querySelectorAll('.level');
+      const levelPanels = document.querySelectorAll('.level-panel');
+      const prevButton = document.querySelector('.prev');
+      const nextButton = document.querySelector('.next');
+      const progress = document.querySelector('.progress');
+      const navArrows = document.getElementById('nav-arrows');
+      
+      let currentLevel = 1;
+      const totalLevels = levels.length;
+      
+      function updateStepper() {
+        // Update level indicators
+        levels.forEach((level, index) => {
+          level.classList.remove('active', 'completed');
+          if (index + 1 < currentLevel) {
+            level.classList.add('completed');
+          } else if (index + 1 === currentLevel) {
+            level.classList.add('active');
+          }
+        });
+        
+        // Update progress line
+        const progressWidth = (currentLevel / totalLevels) * 100;
+        progress.style.width = `${progressWidth}%`;
+        
+        // Update content visibility
+        levelPanels.forEach(panel => {
+          panel.classList.remove('active');
+          if (parseInt(panel.dataset.level) === currentLevel) {
+            panel.classList.add('active');
+          }
+        });
+        
+        // Update buttons
+        prevButton.disabled = currentLevel === 1;
+        
+        // Hide next button on level 4
+        if (currentLevel === totalLevels) {
+          navArrows.classList.add('hide-next');
+        } else {
+          navArrows.classList.remove('hide-next');
+        }
+      }
+      
+      // Next button click handler
+      nextButton.addEventListener('click', function() {
+        if (currentLevel < totalLevels) {
+          currentLevel++;
+          updateStepper();
+        }
+      });
+      
+      // Previous button click handler
+      prevButton.addEventListener('click', function() {
+        if (currentLevel > 1) {
+          currentLevel--;
+          updateStepper();
+        }
+      });
+      
+      // Level click handler
+      levels.forEach(level => {
+        level.addEventListener('click', function() {
+          currentLevel = parseInt(this.dataset.level);
+          updateStepper();
+        });
+      });
+      
+      // Initialize stepper
+      updateStepper();
+    });
+  </script>
+
+
+
+
+
+
+<!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+                <div class="footer__content grid">
+                    <div class="footer__data">
+                        <h3 class="footer__title">Travel</h3>
+                        <p class="footer__description">Travel you choose the <br> destination, 
+                            we offer you the <br> experience.
+                        </p>
+                        <div>
+                            <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                                <i class="ri-facebook-box-fill"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="footer__social">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                            <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                                <i class="ri-youtube-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+    
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">About</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">About Us</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Features</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">New & Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">Company</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Team</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Plan y Pricing</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Become a member</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">Support</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">FAQs</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Support Center</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer__rights">
+                    <p class="footer__copy">&#169; 2021 Bedimcode. All rigths reserved.</p>
+                    <div class="footer__terms">
+                        <a href="#" class="footer__terms-link">Terms & Agreements</a>
+                        <a href="#" class="footer__terms-link">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+         <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class="ri-arrow-up-line scrollup__icon"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL===============-->
+        <script src="assets/js/scrollreveal.min.js"></script>
+        
+        <!--=============== SWIPER JS ===============-->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>            
